@@ -5,4 +5,4 @@
 Participants:
 Joseph Wallace
 Michelle Gutierrez
-
+Jared Martinez
