@@ -4,3 +4,4 @@
 
 Participants:
 Joseph Wallace
+Michelle Gutierrez
