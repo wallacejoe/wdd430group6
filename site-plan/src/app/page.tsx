@@ -20,7 +20,7 @@ export default function Page() {
       </section>
       <section>
         <h2>Color Palette</h2>
-        <a href="https://coolors.co/ececec-69140e-603613-f28123-f30b0b" target="_blank">Color Palette: https://coolors.co/ececec-69140e-603613-f28123-f30b0b</a>
+        <a href="https://coolors.co/562C2C-F2A45C-F5DFBB-96CE8C-f30b0b" target="_blank">Color Palette: https://coolors.co/562C2C-F2A45C-F5DFBB-96CE8C-f30b0b</a>
       </section>
       <table className={styles.table}>
         <tbody className={styles.tbody}>
@@ -31,10 +31,10 @@ export default function Page() {
             <th>Accent 2</th>
           </tr>
           <tr className={styles.tr}>
-            <th className={styles.primary}>#ececec</th>
-            <th className={styles.secondary}>#F28123</th>
-            <th className={styles.accent1}>#F30B0B</th>
-            <th className={styles.accent2}>#69140E</th>
+            <th className={styles.primary}>#562C2C</th>
+            <th className={styles.secondary}>#F2A45C</th>
+            <th className={styles.accent1}>#F5DFBB</th>
+            <th className={styles.accent2}>#96CE8C</th>
           </tr>
         </tbody>
       </table>
