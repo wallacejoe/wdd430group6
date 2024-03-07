@@ -4,4 +4,3 @@
 
 Participants:
 Joseph Wallace
-Jared Martinezz
