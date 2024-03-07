@@ -5,6 +5,6 @@
 Participants:
 Joseph Wallace
 Michelle Gutierrez
-Jared Martinez
 Jordan Postak
 Jose Beltran
+Jared Martinez
