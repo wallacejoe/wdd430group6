@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Slab:wght@100..900&display=swap');
 
+/* Site Plan styles */
 .h1, .h2, .h3, .h4 {
     font-family: Rubik, Arial, 'Times New Roman';
 }
@@ -114,6 +115,120 @@
     padding: 3em;
     margin: 50px 0px 0px 0px;
     font-family: Roboto, Helvetica, sans-serif;
+}
+
+/* Global styles */
+.global {
+    display: block;
+}
+
+.globalBody {
+    margin: 0;
+}
+
+.content {
+    margin: 2em;
+}
+
+.dashboard {
+
+}
+
+/* Navigation styles */
+.topNav {
+    background-color: #aec5eb;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    background-color: #aec5eb;
+}
+
+.navLink {
+    text-decoration: none;
+    background-color: #3a405a;
+    color: white;
+    padding: .75em;
+    margin: 2rem;
+}
+
+.navLink:hover {
+    background-color: #aec5eb;
+    color: black;
+}
+
+/* Landing styles */
+.logo {
+    position: absolute;
+    background-color: #562C2C;
+    padding: .75rem;
+    width: 3rem;
+    left: 4rem;
+    top: 4rem;
+    text-align: center;
+}
+
+.heroTitle {
+    max-width: 16rem;
+    color: white;
+    font-size: 3rem;
+    text-shadow: 2px 2px 2px black;
+}
+
+.landingImg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.landingBanner {
+    position: absolute;
+    left: 8rem;
+    top: 10rem;
+}
+
+.loginBtn {
+    text-decoration: none;
+    color: white;
+    background-color: #3a405a;
+    padding: .75rem;
+    width: 3rem;
+    font-size: 2rem;
+    border-radius:8px;
+    text-align: center;
+    box-shadow: 2px 2px 2px black;
+}
+
+.loginBtn:hover {
+    background-color: #aec5eb;
+    color: black;
+}
+
+/* Home Page styles */
+.homePage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.highlightParent {
+    display: flex;
+}
+
+.highlight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em;
+    background-color: #F5DFBB;
+}
+
+.highlightImg {
+    
 }
 
 .hover_box {
