@@ -116,3 +116,16 @@
     font-family: Roboto, Helvetica, sans-serif;
 }
 
+.hover_box {
+    display: flex;
+    background-color: #aec5eb;
+    width: 4rem;
+    height: 4rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.hover_box:hover {
+    box-shadow: .75rem .75rem #3A405A;
+    transition: box-shadow 5s ease-in-out;
+}
