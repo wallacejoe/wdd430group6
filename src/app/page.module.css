@@ -130,9 +130,6 @@
     margin: 2em;
 }
 
-.dashboard {
-
-}
 
 /* Navigation styles */
 .topNav {
@@ -225,10 +222,6 @@
     align-items: center;
     margin: 2em;
     background-color: #F5DFBB;
-}
-
-.highlightImg {
-    
 }
 
 .hover_box {

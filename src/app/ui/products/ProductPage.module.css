@@ -1,0 +1,50 @@
+/* ProductPage.module.css */
+.productPage {
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center text */
+}
+
+.productContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.product {
+    background-color: #F5DFBB;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+/* ProductListing.module.css */
+.productListing {
+    color: #fff; /* Text color */
+}
+
+.productContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.product {
+    background-color: #F5DFBB;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.button {
+    background-color: #96CE8C;
+    padding: 20px;
+    margin-top: 10px; /* Add margin to separate from products */
+    cursor: pointer;
+}
