@@ -10,4 +10,4 @@ Jose Beltran
 Jared Martinez
 
 <br />
-Vercel URL: https://wdd430group6-git-main-joseph-wallaces-projects.vercel.app/
+Vercel URL: https://wdd430-flame.vercel.app/
