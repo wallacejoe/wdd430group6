@@ -10,4 +10,4 @@ Jose Beltran
 Jared Martinez
 
 <br />
-Vercel URL: https://wdd430-flame.vercel.app/
+Vercel URL: wdd430group6-five.vercel.app
