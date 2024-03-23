@@ -1,4 +1,4 @@
-// File: C:\Users\jorda\OneDrive\Desktop\School\Winter 2024\wdd430group6\src\app\layout.tsx
+// File: C:\Documents\BYU\Year Class\2024\Classes\Winter 2024\WDD 430\Group6\wdd430group6\src\app\layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
