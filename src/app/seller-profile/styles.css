@@ -1,3 +1,9 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #7098D0;
+    color: #fff;
+}
 
 .profile{
     display: flex;
@@ -6,14 +12,27 @@
     align-items: center;
 }
 .gallery{
-    display: flex;
-    text-align: center;
-     
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 20px;
+    justify-items: center; 
+    align-items: center; 
+   
    
 }
-
-img{
+.productName{
+    text-align: center;
+}
+ .gallery img{
     width: 200px;
     height: 200px;
-    padding:  20px;
+    
+    box-shadow:  0 0 0 1px rgba(249, 242, 242, 0.15);
+    border-radius: 8px;
+}
+.sellerName{
+   align-self:flex-start;
+   margin-left: 25%;
+   margin-top:10%;
+   margin-bottom: 5%;
 }
