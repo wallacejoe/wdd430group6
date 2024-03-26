@@ -1,6 +1,8 @@
 /*!*******************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/page.module.css ***!
   \*******************************************************************************************************************************************************************************************************************************************************************/
+/*app/page.module.css*/
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Slab:wght@100..900&display=swap');
 
 /* Site Plan styles */
@@ -133,9 +135,6 @@
     margin: 2em;
 }
 
-.page_dashboard__z1au2 {
-
-}
 
 /* Navigation styles */
 .page_topNav__kzPo2 {
@@ -228,10 +227,6 @@
     align-items: center;
     margin: 2em;
     background-color: #F5DFBB;
-}
-
-.page_highlightImg__XEBn_ {
-    
 }
 
 .page_hover_box__pPCyy {

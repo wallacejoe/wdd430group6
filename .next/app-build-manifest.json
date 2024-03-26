@@ -21,15 +21,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/dashboard/(overview)/page.js"
     ],
-    "/dashboard/siteplan/page": [
+    "/seller-profile/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/siteplan/page.js"
-    ],
-    "/not-found": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/not-found.js"
+      "static/css/app/seller-profile/page.css",
+      "static/chunks/app/seller-profile/page.js"
     ]
   }
 }

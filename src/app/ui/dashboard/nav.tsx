@@ -10,6 +10,7 @@ export default function Nav() {
             <Link key={'Other'} href={'#'} className={styles.navLink}>Other</Link>
             <Link key={'Site Plan'} href={'/dashboard/siteplan'} className={styles.navLink}>Site Plan</Link>
             <Link key={'Landing Page'} href={'/'} className={styles.navLink}>Landing</Link>
+            <Link key={'Seller Profile'} href={'/seller-profile'} className={styles.navLink}>Seller Profile</Link>
         </div>
     );
 }

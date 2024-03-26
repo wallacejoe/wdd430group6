@@ -1,0 +1,31 @@
+.footer {
+    width: 100%;
+    background-color:#216AD0 ;
+    margin-top: 5%;
+  }
+.footerLinks{
+ 
+    padding: 5px;
+    display: flex;
+    justify-content: space-around; /* Distribuye los elementos horizontalmente */
+    align-items: center; /* Centra verticalmente los elementos */
+
+}
+  .footerSocials{
+    display: flex;
+    flex-direction: row;
+
+
+  }
+
+  .footerSocials img{
+    width: 25px;
+    height: 25px;
+    border-color:none;
+    padding: 10px;
+   
+  }
+
+  .footerGroup{
+    font-size: 18px;
+  }

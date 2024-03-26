@@ -1,6 +1,7 @@
 // imports
 import styles from '@/app/page.module.css';
 import Highlights from '@/app/ui/dashboard/highlights';
+
 // metadata
 
 // Home page data
