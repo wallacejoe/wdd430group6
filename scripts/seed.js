@@ -2,23 +2,26 @@ const { db } = require('@vercel/postgres');
 const {
   users,
   products,
-  rating,
-  product_category,
-  category,
+  ratings,
+  product_categories,
+  categories,
 } = require('../src/app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
 async function seedUsers(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+    await client.sql`DO $$ BEGIN
+      CREATE TYPE yes_no AS ENUM ('Y','N');
+      EXCEPTION WHEN duplicate_object THEN NULL; END $$;`;
     // Create the "users" table if it doesn't exist
     const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS users (
-        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        user_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
-        is_seller
+        is_seller yes_no NOT NULL
       );
     `;
 
@@ -29,9 +32,9 @@ async function seedUsers(client) {
       users.map(async (user) => {
         const hashedPassword = await bcrypt.hash(user.password, 10);
         return client.sql`
-        INSERT INTO users (id, name, email, password)
-        VALUES (${user.id}, ${user.name}, ${user.email}, ${hashedPassword})
-        ON CONFLICT (id) DO NOTHING;
+        INSERT INTO users (user_id, name, email, password, is_seller)
+        VALUES (${user.user_id}, ${user.name}, ${user.email}, ${user.password}, ${user.is_seller})
+        ON CONFLICT (user_id) DO NOTHING;
       `;
       }),
     );
@@ -48,116 +51,152 @@ async function seedUsers(client) {
   }
 }
 
-async function seedInvoices(client) {
+async function seedProducts(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-    // Create the "invoices" table if it doesn't exist
+    // Create the "products" table if it doesn't exist
     const createTable = await client.sql`
-    CREATE TABLE IF NOT EXISTS invoices (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    customer_id UUID NOT NULL,
-    amount INT NOT NULL,
-    status VARCHAR(255) NOT NULL,
-    date DATE NOT NULL
+    CREATE TABLE IF NOT EXISTS products (
+    product_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    image_url VARCHAR(255),
+    user_id UUID NOT NULL
   );
 `;
 
-    console.log(`Created "invoices" table`);
+    console.log(`Created "products" table`);
 
-    // Insert data into the "invoices" table
-    const insertedInvoices = await Promise.all(
-      invoices.map(
-        (invoice) => client.sql`
-        INSERT INTO invoices (customer_id, amount, status, date)
-        VALUES (${invoice.customer_id}, ${invoice.amount}, ${invoice.status}, ${invoice.date})
-        ON CONFLICT (id) DO NOTHING;
+    // Insert data into the "products" table
+    const insertedProducts = await Promise.all(
+      products.map(
+        (product) => client.sql`
+        INSERT INTO products (product_id, name, description, image_url, user_id)
+        VALUES (${product.product_id}, ${product.name}, ${product.description}, ${product.image_url}, ${product.user_id})
+        ON CONFLICT (product_id) DO NOTHING;
       `,
       ),
     );
 
-    console.log(`Seeded ${insertedInvoices.length} invoices`);
+    console.log(`Seeded ${insertedProducts.length} products`);
 
     return {
       createTable,
-      invoices: insertedInvoices,
+      invoices: insertedProducts,
     };
   } catch (error) {
-    console.error('Error seeding invoices:', error);
+    console.error('Error seeding products:', error);
     throw error;
   }
 }
 
-async function seedCustomers(client) {
+async function seedRatings(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-    // Create the "customers" table if it doesn't exist
+    // Create the "ratings" table if it doesn't exist
     const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS customers (
-        id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
-        image_url VARCHAR(255) NOT NULL
+      CREATE TABLE IF NOT EXISTS ratings (
+        rating_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        rating FLOAT NOT NULL,
+        review TEXT NOT NULL,
+        date DATE NOT NULL,
+        product_id UUID NOT NULL
       );
     `;
 
-    console.log(`Created "customers" table`);
+    console.log(`Created "ratings" table`);
 
-    // Insert data into the "customers" table
-    const insertedCustomers = await Promise.all(
-      customers.map(
-        (customer) => client.sql`
-        INSERT INTO customers (id, name, email, image_url)
-        VALUES (${customer.id}, ${customer.name}, ${customer.email}, ${customer.image_url})
-        ON CONFLICT (id) DO NOTHING;
+    // Insert data into the "ratings" table
+    const insertedRatings = await Promise.all(
+      ratings.map(
+        (rating) => client.sql`
+        INSERT INTO ratings (rating_id, rating, review, date, product_id)
+        VALUES (${rating.rating_id}, ${rating.rating}, ${rating.review}, ${rating.date}, ${rating.product_id})
+        ON CONFLICT (rating_id) DO NOTHING;
       `,
       ),
     );
 
-    console.log(`Seeded ${insertedCustomers.length} customers`);
+    console.log(`Seeded ${insertedRatings.length} ratings`);
 
     return {
       createTable,
-      customers: insertedCustomers,
+      customers: insertedRatings,
     };
   } catch (error) {
-    console.error('Error seeding customers:', error);
+    console.error('Error seeding ratings:', error);
     throw error;
   }
 }
 
-async function seedRevenue(client) {
+async function seedCategories(client) {
   try {
-    // Create the "revenue" table if it doesn't exist
+    // Create the "categories" table if it doesn't exist
     const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS revenue (
-        month VARCHAR(4) NOT NULL UNIQUE,
-        revenue INT NOT NULL
+      CREATE TABLE IF NOT EXISTS categories (
+        category_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+        tag VARCHAR(255) NOT NULL
       );
     `;
 
-    console.log(`Created "revenue" table`);
+    console.log(`Created "categories" table`);
 
-    // Insert data into the "revenue" table
-    const insertedRevenue = await Promise.all(
-      revenue.map(
-        (rev) => client.sql`
-        INSERT INTO revenue (month, revenue)
-        VALUES (${rev.month}, ${rev.revenue})
-        ON CONFLICT (month) DO NOTHING;
+    // Insert data into the "categories" table
+    const insertedCategories = await Promise.all(
+      categories.map(
+        (category) => client.sql`
+        INSERT INTO categories (category_id, tag)
+        VALUES (${category.category_id}, ${category.tag})
+        ON CONFLICT (category_id) DO NOTHING;
       `,
       ),
     );
 
-    console.log(`Seeded ${insertedRevenue.length} revenue`);
+    console.log(`Seeded ${insertedCategories.length} categories`);
 
     return {
       createTable,
-      revenue: insertedRevenue,
+      revenue: insertedCategories,
     };
   } catch (error) {
-    console.error('Error seeding revenue:', error);
+    console.error('Error seeding categories:', error);
+    throw error;
+  }
+}
+
+async function seedProductCategories(client) {
+  try {
+    // Create the "product categories" table if it doesn't exist
+    const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS product_categories (
+        product_id UUID NOT NULL,
+        category_id UUID NOT NULL
+      );
+    `;
+
+    console.log(`Created "product categories" table`);
+
+    // Insert data into the "product categories" table
+    const insertedProductCategories = await Promise.all(
+      product_categories.map(
+        (pc) => client.sql`
+        INSERT INTO product_categories (product_id, category_id)
+        VALUES (${pc.product_id}, ${pc.category_id})
+        ;
+      `,
+      ),
+    );
+
+    console.log(`Seeded ${insertedProductCategories.length} product categories`);
+
+    return {
+      createTable,
+      revenue: insertedProductCategories,
+    };
+  } catch (error) {
+    console.error('Error seeding product categories:', error);
     throw error;
   }
 }
@@ -166,9 +205,10 @@ async function main() {
   const client = await db.connect();
 
   await seedUsers(client);
-  await seedCustomers(client);
-  await seedInvoices(client);
-  await seedRevenue(client);
+  await seedRatings(client);
+  await seedProducts(client);
+  await seedCategories(client);
+  await seedProductCategories(client);
 
   await client.end();
 }
